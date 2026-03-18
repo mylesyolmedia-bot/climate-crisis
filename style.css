@@ -1,0 +1,32 @@
+:root {
+    --header-color: green;
+    --nav-color: lightgreen;
+}
+
+* {
+    margin: 0px;
+
+}
+
+.header-wrapper {
+    background-color: var(--header-color);
+    width: 100vw;
+    height: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-wrapper h1 {
+    color: white;
+    font-size: 4rem;
+}
+
+.nav-wrapper {
+    background-color: var(--nav-color);
+    width: 100vw;
+    height: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
