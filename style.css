@@ -28,6 +28,11 @@ body {
     font-size: 4rem;
 }
 
+nav {
+    position: sticky;
+    top: 0px;
+}
+
 .nav-wrapper {
     background-color: var(--nav-color);
     width: 100vw;
