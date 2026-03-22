@@ -71,37 +71,54 @@ nav {
     border-radius: 2px;
 }
 
-main {
+.information {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-top: 3rem;
+    gap: 3rem;
+}
+
+.information article {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.facts-list {
-    margin-left: 5vw;
-    margin-right: 5vw;
-}
-
-.facts-list li {
-    padding: 2rem;
-}
-
-.facts-list li h2 {
+.information article h2 {
     font-size: 3rem;
+    text-align: left;
+    width: 100%;
 }
 
-.facts-list li p {
+.information article p {
     margin-top: 1rem;
 }
 
-.facts-list li img {
+.information article img {
     margin-top: 1rem;
     width: 300px;
     height: 200px;
 }
 
-.facts-list li::marker {
-    font-size: 3rem;
-    font-weight: bold;
+.dropdown-closed {
+    border-top: 3px solid white;
+    border-bottom: 3px solid white;
+    border-radius: 3px;
+    margin-top: 1rem;
+    overflow: hidden;
+    height: 1px;
+    width: 75%;
+}
+
+.dropdown-open {
+    border-top: 3px solid white;
+    border-bottom: 3px solid white;
+    margin-top: 1rem;
+    overflow: hidden;
+    width: 75%;
 }
