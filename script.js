@@ -21,7 +21,7 @@ readMoreButtons.forEach((button) => {
 addEventListener("scroll", (event) => {
     oddArticles.forEach((article) => {
         const boundingRectangle = article.getBoundingClientRect();
-        article.style.transform = "translate(-" + (Math.max(0, (boundingRectangle.top - window.innerHeight / 1.5) / 2.5)) + "px)";
+        article.style.transform = "translate(-" + (Math.max(0, (boundingRectangle.top - window.innerHeight / 2) / 1.75)) + "px)";
         article.style.opacity = Math.max(0, (window.innerHeight * 0.4) - boundingRectangle.top * 0.45) + "%"
     });
 });
@@ -29,7 +29,7 @@ addEventListener("scroll", (event) => {
 addEventListener("scroll", (event) => {
     evenArticles.forEach((article) => {
         const boundingRectangle = article.getBoundingClientRect();
-        article.style.transform = "translate(" + (Math.max(0, (boundingRectangle.top - window.innerHeight / 1.5) / 2.5)) + "px)";
+        article.style.transform = "translate(" + (Math.max(0, (boundingRectangle.top - window.innerHeight / 2) / 1.75)) + "px)";
         article.style.opacity = Math.max(0, (window.innerHeight * 0.4) - boundingRectangle.top * 0.45) + "%"
     });
 });
