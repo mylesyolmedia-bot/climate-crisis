@@ -25,7 +25,7 @@ function createNavMenuButton(buttonData) {
     button.addEventListener("click", (event) => {
         const boundingRectangle = targetSection.getBoundingClientRect();
         window.scrollBy({
-            top: boundingRectangle.top - 100,
+            top: boundingRectangle.top - 140,
             behavior: "smooth"
         })
     });
