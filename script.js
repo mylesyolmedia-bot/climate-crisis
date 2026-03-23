@@ -1,6 +1,63 @@
+const navMenuLayer = document.querySelector(".nav-menu-layer");
+const navMenu = document.querySelector(".nav-menu");
+const navMenuButton = document.querySelector("#nav-menu.nav-btn");
+
 const readMoreButtons = document.querySelectorAll(".dropdown-button");
 const oddArticles = document.querySelectorAll(".information article:nth-child(odd)");
 const evenArticles = document.querySelectorAll(".information article:nth-child(even)");
+
+const navMenuButtons = [
+    {text: "Extreme Heat", anchorId: "extreme-heat"},
+    {text: "Wildfires", anchorId: "wildfires"},
+    {text: "Air Quality", anchorId: "air-quality"},
+    {text: "Droughts", anchorId: "droughts"},
+    {text: "Water Supply", anchorId: "water-supply"},
+    {text: "Sea Level Rise", anchorId: "sea-level-rise"},
+]
+
+function createNavMenuButton(buttonData) {
+    const button = document.createElement("button");
+    button.setAttribute("class", "nav-btn");
+    button.textContent = buttonData.text;
+
+    const targetSection = document.querySelector("#" + buttonData.anchorId)
+    
+    button.addEventListener("click", (event) => {
+        const boundingRectangle = targetSection.getBoundingClientRect();
+        window.scrollBy({
+            top: boundingRectangle.top - 100,
+            behavior: "smooth"
+        })
+    });
+
+    navMenu.appendChild(button);
+}
+
+function setNavMenuOpened(opened) {
+    console.log(opened);
+    if (!opened) {
+        navMenu.style.transform = "translate(-100%)";
+        navMenuLayer.style.opacity = "0%";
+        navMenuLayer.style.pointerEvents = "none";
+    } else {
+        navMenu.style.transform = "translate(0%)";
+        navMenuLayer.style.opacity = "100%";
+        navMenuLayer.style.pointerEvents = "auto";
+    }
+}
+
+navMenuButtons.forEach(createNavMenuButton)
+
+navMenuLayer.addEventListener("click", (event) => {
+    console.log(event.target.getAttribute("class"));
+    if (event.target.getAttribute("class") == "nav-menu-layer" || event.target.getAttribute("class") == "nav-btn") {
+        setNavMenuOpened(false);
+    }
+})
+
+navMenuButton.addEventListener("click", (event) => {
+    setNavMenuOpened(true);
+});
 
 readMoreButtons.forEach((button) => {
     const extraInformation = button.parentElement;
@@ -21,7 +78,7 @@ readMoreButtons.forEach((button) => {
 addEventListener("scroll", (event) => {
     oddArticles.forEach((article) => {
         const boundingRectangle = article.getBoundingClientRect();
-        article.style.transform = "translate(-" + (Math.max(0, (boundingRectangle.top - window.innerHeight / 2) / 1.75)) + "px)";
+        article.style.transform = "translate(-" + (Math.max(0, (boundingRectangle.top - window.innerHeight / 2) / 1.5)) + "px)";
         article.style.opacity = Math.max(0, (window.innerHeight * 0.4) - boundingRectangle.top * 0.45) + "%"
     });
 });
@@ -29,7 +86,7 @@ addEventListener("scroll", (event) => {
 addEventListener("scroll", (event) => {
     evenArticles.forEach((article) => {
         const boundingRectangle = article.getBoundingClientRect();
-        article.style.transform = "translate(" + (Math.max(0, (boundingRectangle.top - window.innerHeight / 2) / 1.75)) + "px)";
+        article.style.transform = "translate(" + (Math.max(0, (boundingRectangle.top - window.innerHeight / 2) / 1.5)) + "px)";
         article.style.opacity = Math.max(0, (window.innerHeight * 0.4) - boundingRectangle.top * 0.45) + "%"
     });
 });
